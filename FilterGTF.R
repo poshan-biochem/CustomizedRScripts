@@ -1,4 +1,4 @@
-FilterGTF <- function(input, output, patterns, negateSearch = FALSE, chunk_size = 1000) {
+FilterGTF <- function(input, output, patterns, negate_search = FALSE, chunk_size = 1000) {
   # Start time tracking
   start_time <- Sys.time()
   
@@ -29,12 +29,8 @@ FilterGTF <- function(input, output, patterns, negateSearch = FALSE, chunk_size 
     if (length(lines) == 0) break 
     
     # Filter lines based on patterns and negateSearch flag
-    if (negateSearch) {
-      filtered_lines <- lines[!stri_detect_fixed(lines, patterns)]
-    } else {
-      filtered_lines <- lines[stri_detect_fixed(lines, patterns)]
-    }
-    
+    filtered_lines <- lines[stri_detect_fixed(lines, patterns, negate = negate_search)]
+  
     # Count the filtered lines
     total_written <- total_written + length(filtered_lines)
     
