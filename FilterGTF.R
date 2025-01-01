@@ -6,7 +6,7 @@ FilterGTF <- function(input, output, patterns, negateSearch = FALSE, chunk_size 
   if (!requireNamespace("stringi", quietly = TRUE)) {
     stop("The 'stringi' package is required but not installed.")
   }
-  
+  library(stringi)
   # Open I/O connections
   input_conn <- tryCatch({
     file(input, open = "r")
